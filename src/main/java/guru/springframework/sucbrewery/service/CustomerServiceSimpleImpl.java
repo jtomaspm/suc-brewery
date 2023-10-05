@@ -14,4 +14,22 @@ public class CustomerServiceSimpleImpl implements CustomerService {
                 .name("John Doe")
                 .build();
     }
+
+    @Override
+    public CustomerDto saveNewCustomer(CustomerDto customerDto) {
+        return CustomerDto.builder()
+                .id(UUID.randomUUID())
+                .name(customerDto.getName())
+                .build();
+    }
+
+    @Override
+    public boolean updateCustomer(UUID customerId, CustomerDto customerDto) {
+        return getCustomerById(customerId) != null;
+    }
+
+    @Override
+    public boolean deleteCustomer(UUID customerId) {
+        return getCustomerById(customerId) != null;
+    }
 }
